@@ -1,0 +1,46 @@
+:root{--bg:#0b1020;--fg:#f1f4ff;--mut:#a3aed4;--card:#141c38;--line:#2a3560;--y:#FCD116;--r:#ff5b6b;--g:#2ecc8f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f6f7fc;--fg:#10183a;--mut:#56608a;--card:#fff;--line:#d3d9ee;--y:#c99700;--r:#d12b3e;--g:#0a8f5a}}
+:root[data-theme="dark"]{--bg:#0b1020;--fg:#f1f4ff;--mut:#a3aed4;--card:#141c38;--line:#2a3560;--y:#FCD116;--r:#ff5b6b;--g:#2ecc8f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.55 Nunito,system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.maths{--ac:var(--y)}.pct{--ac:var(--r)}.svt{--ac:var(--g)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 5vw;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.logo{font:800 26px "Baloo 2",system-ui,sans-serif}
+.logo i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:3px}
+.seg{display:flex;border:1px solid var(--line);border-radius:30px;overflow:hidden}
+button{font:inherit;color:inherit;cursor:pointer}
+.seg button{background:none;border:0;padding:7px 18px;font-weight:600}
+button[aria-pressed="true"].c{background:var(--fg);color:var(--bg)}
+.hero{padding:6vh 5vw 2vh;max-width:70rem;margin:auto}
+h1{font:800 clamp(38px,7vw,76px)/1 "Baloo 2",system-ui,sans-serif;margin:0 0 .3em}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--y),var(--r),var(--g));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mut);max-width:36em;margin:0 0 1.2em}
+.tabs{display:flex;flex-wrap:wrap;gap:12px}
+.tabs button{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:12px 22px;font:800 20px "Baloo 2",system-ui,sans-serif;transition:transform .15s}
+.tabs button:hover{transform:translateY(-3px)}
+.tabs button[aria-pressed="true"]{border-color:var(--ac);box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 30%,transparent)}
+.tabs .t-maths{--ac:var(--y)}.tabs .t-pct{--ac:var(--r)}.tabs .t-svt{--ac:var(--g)}
+main{max-width:70rem;margin:auto;padding:2vh 5vw 6vh;display:grid;gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--ac);border-radius:18px;padding:18px;display:grid;gap:18px}
+@media (min-width:820px){.card{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}}
+.stage{background:color-mix(in srgb,var(--bg) 60%,var(--card));border-radius:12px;display:flex;justify-content:center;align-items:center;min-height:220px;padding:8px}
+.stage svg{width:100%;max-height:420px;color:var(--fg)}
+h3{font:800 26px/1.1 "Baloo 2",system-ui,sans-serif;margin:0 0 .3em;color:var(--ac)}
+.side p{margin:0 0 .8em;color:var(--mut)}
+.ctl{display:grid;gap:10px;margin:12px 0}
+label{display:grid;gap:2px;font-weight:600}
+output{color:var(--ac);font-weight:800}
+input[type=range]{width:100%;accent-color:var(--ac);height:28px}
+select{font:inherit;padding:8px;border-radius:8px;background:var(--bg);color:var(--fg);border:1px solid var(--line)}
+.b{background:var(--ac);color:#111;border:0;border-radius:10px;padding:9px 14px;font-weight:800;margin-right:8px}
+.out{background:color-mix(in srgb,var(--ac) 14%,transparent);border-left:4px solid var(--ac);border-radius:6px;padding:10px 12px;color:var(--fg)!important;margin:0}
+.pun{border-collapse:separate;border-spacing:8px;font:800 24px "Baloo 2",sans-serif;text-align:center}
+.pun td{width:84px;height:64px;border-radius:12px;border:2px solid var(--ac);background:color-mix(in srgb,var(--ac) 22%,transparent)}
+.pun td.rec{background:none;border-style:dashed;color:var(--mut)}
+.flow{stroke-dasharray:7 9;animation:fl linear infinite}
+@keyframes fl{to{stroke-dashoffset:-32}}
+footer{text-align:center;color:var(--mut);font-size:14px;padding:0 5vw 5vh}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--ac,var(--y));outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.flow{animation:none}}
