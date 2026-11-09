@@ -11,7 +11,7 @@ function show(){
 var cl=document.getElementById("cls"),tb=document.getElementById("tabs"),ls=document.getElementById("list");
 cl.innerHTML="";[["3","3e"],["T","Terminale"]].forEach(function(x){var b=document.createElement("button");b.className="c";b.textContent=x[1];b.setAttribute("aria-pressed",C==x[0]);b.onclick=function(){C=x[0];show()};cl.append(b)});
 tb.innerHTML="";["maths","pct","svt"].forEach(function(k){var b=document.createElement("button");b.className="t-"+k;b.textContent=NM[k];b.setAttribute("aria-pressed",S==k);b.onclick=function(){S=k;show()};tb.append(b)});
-ls.innerHTML="";ls.className=S;
+ls.innerHTML="";ls.className=S;upd();if(M=="fun"){fun(ls);return}
 L.filter(function(l){return l.c==C&&l.s==S}).forEach(function(l){var e=document.createElement("article");e.className="card";e.innerHTML='<div class="stage"></div><div class="side"><h3></h3><p></p><div class="ctl"></div><p class="out" aria-live="polite"></p></div>';
 e.querySelector("h3").textContent=l.t;e.querySelector(".side p").textContent=l.d;ls.append(e);l.f(e.querySelector(".stage"),e.querySelector(".ctl"),e.querySelector(".out"))})}
 show();

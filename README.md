@@ -31,7 +31,8 @@ index.html            page unique
 css/style.css         thème clair/sombre, couleurs par matière
 js/helpers.js         état (classe, matière) et composants (curseur, liste, bouton)
 js/lessons/*.js       une leçon = une fonction (schéma SVG + contrôles + résultat)
-js/app.js             liste des leçons et affichage
+js/catalogue.js       catalogue de cours fun (modèles, quiz, XP, mascotte)
+js/app.js             liste des labos et affichage
 ```
 
 ## Ajouter une leçon
@@ -47,3 +48,7 @@ js/app.js             liste des leçons et affichage
 ## Pistes
 
 Thalès et trigonométrie, solides en perspective, optique et mécanique en PCT, quiz après chaque leçon, choix de la série en Terminale.
+
+## Catalogue de cours fun
+
+Chaque cours est un objet du tableau `K` (`js/catalogue.js`) : `{id, c, s, e, t, p, m, h, b, q}`. `p` choisit le modèle : `ex` (fiche express), `an` (analogie), `mn` (mnémo), `vf` (vrai ou faux, avec `v` à la place de `b` et `q`). Les points d'expérience et les cours terminés sont gardés dans le navigateur (localStorage).
