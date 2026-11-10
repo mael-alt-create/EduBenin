@@ -6,14 +6,14 @@ Plateforme éducative de Maths, PCT et SVT pour les classes de 3e et de Terminal
 
 ## Leçons actuelles
 
-| Classe | Matière | Leçon |
-|---|---|---|
-| 3e | Maths | Théorème de Pythagore ; volumes (cylindre, cône, sphère) |
-| 3e | PCT | Circuit électrique et loi d'Ohm (série / dérivation) |
-| 3e | SVT | Photosynthèse |
-| Terminale | Maths | Fonctions du second degré |
-| Terminale | PCT | Dosage acide-base (titrage) |
-| Terminale | SVT | Génétique : échiquier de croisement |
+| Classe    | Matière | Leçon                                                    |
+| --------- | ------- | -------------------------------------------------------- |
+| 3e        | Maths   | Théorème de Pythagore ; volumes (cylindre, cône, sphère) |
+| 3e        | PCT     | Circuit électrique et loi d'Ohm (série / dérivation)     |
+| 3e        | SVT     | Photosynthèse                                            |
+| Terminale | Maths   | Fonctions du second degré                                |
+| Terminale | PCT     | Dosage acide-base (titrage)                              |
+| Terminale | SVT     | Génétique : échiquier de croisement                      |
 
 ## Lancer le projet
 
@@ -64,13 +64,13 @@ cd server && npm install && cp .env.example .env && npm start
 
 Sans `DATABASE_URL`, la progression est gardée en mémoire. Avec PostgreSQL, le schéma de `db/schema.sql` est créé au démarrage (non testé sur une vraie base pour l'instant).
 
-| Route | Rôle |
-|---|---|
-| `GET /api/health` | état de l’API |
-| `GET /api/courses?classe=3&matiere=maths&q=` | catalogue filtré |
-| `GET /api/courses/:id` | un cours, sans les bonnes réponses |
-| `POST /api/courses/:id/answer` | corrige une réponse (`{choix}` ou `{affirmation, valeur}`) et attribue les points |
-| `GET /api/progress` | XP et cours terminés de l’appareil |
+| Route                                        | Rôle                                                                              |
+| -------------------------------------------- | --------------------------------------------------------------------------------- |
+| `GET /api/health`                            | état de l’API                                                                     |
+| `GET /api/courses?classe=3&matiere=maths&q=` | catalogue filtré                                                                  |
+| `GET /api/courses/:id`                       | un cours, sans les bonnes réponses                                                |
+| `POST /api/courses/:id/answer`               | corrige une réponse (`{choix}` ou `{affirmation, valeur}`) et attribue les points |
+| `GET /api/progress`                          | XP et cours terminés de l’appareil                                                |
 
 La progression est liée à un UUID anonyme envoyé dans l’en-tête `X-Device-Id` : aucune donnée personnelle n’est stockée.
 

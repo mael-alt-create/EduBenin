@@ -9,8 +9,12 @@ if (process.env.DATABASE_URL) {
   store = createPgStore(process.env.DATABASE_URL);
   await store.init(readFileSync(new URL("../db/schema.sql", import.meta.url), "utf8"));
 } else {
-  console.warn("DATABASE_URL absent : stockage en mémoire (la progression sera perdue au redémarrage).");
+  console.warn(
+    "DATABASE_URL absent : stockage en mémoire (la progression sera perdue au redémarrage).",
+  );
   store = createMemoryStore();
 }
 const port = Number(process.env.PORT) || 3000;
-createApp({ courses, store, corsOrigin: process.env.CORS_ORIGIN }).listen(port, () => console.log(`API sur http://localhost:${port}`));
+createApp({ courses, store, corsOrigin: process.env.CORS_ORIGIN }).listen(port, () =>
+  console.log(`API sur http://localhost:${port}`),
+);

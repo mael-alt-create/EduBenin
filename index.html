@@ -1,42 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>LumiSciences – Maths, PCT et SVT en 3e et Terminale</title>
-<meta name="description" content="Cours simplifiés et fun de Maths, PCT et SVT pour la 3e et la Terminale : fiches express, analogies, quiz et labos interactifs.">
-<meta name="theme-color" content="#0b1020">
-<meta property="og:title" content="LumiSciences – Les sciences, en vrai.">
-<meta property="og:description" content="Maths, PCT et SVT en 3e et Terminale : cours fun, quiz et labos interactifs.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/catalogue.css">
-
-</head>
-<body>
-<noscript><p>LumiSciences a besoin de JavaScript pour afficher les cours et les labos. Active-le dans ton navigateur puis recharge la page.</p></noscript>
-<div class="top">
-<div class="logo">Edu<span style="color:var(--y)">Benin</span><span style="color:var(--r)">+</span><i style="background:var(--y)"></i><i style="background:var(--r)"></i><i style="background:var(--g)"></i></div>
-<div class="seg" id="cls"></div><div class="xp" id="xp" aria-live="polite"></div>
-</div>
-<div class="hero">
-<h1>Les sciences, <em>en vrai.</em></h1>
-<p>Manipule, change les valeurs, observe. Des labos et des schémas en 2D pour comprendre au lieu d’apprendre par cœur.</p>
-<div class="tabs" id="tabs"></div><div class="mode" id="mode"></div><div class="kofi"><span aria-hidden="true">🦎</span><p id="kofi">Salut, je suis Kofi ! Choisis un cours et gagne des XP.</p></div>
-</div>
-<main id="list"></main>
-<script src="js/helpers.js"></script>
-<script src="js/lessons/maths-pythagore.js"></script>
-<script src="js/lessons/maths-volumes.js"></script>
-<script src="js/lessons/pct-circuit.js"></script>
-<script src="js/lessons/maths-parabole.js"></script>
-<script src="js/lessons/pct-titrage.js"></script>
-<script src="js/lessons/svt-photosynthese.js"></script>
-<script src="js/lessons/svt-genetique.js"></script>
-<script src="js/catalogue.js"></script>
-<script src="js/app.js"></script>
-<script>if("serviceWorker"in navigator&&location.protocol!="file:")navigator.serviceWorker.register("sw.js")</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>LumiSciences – Maths, PCT et SVT en 3e et Terminale</title>
+    <meta
+      name="description"
+      content="Cours simplifiés et fun de Maths, PCT et SVT pour la 3e et la Terminale : fiches express, analogies, quiz et labos interactifs."
+    />
+    <meta name="theme-color" content="#0b1020" />
+    <meta property="og:title" content="LumiSciences – Les sciences, en vrai." />
+    <meta
+      property="og:description"
+      content="Maths, PCT et SVT en 3e et Terminale : cours fun, quiz et labos interactifs."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/catalogue.css" />
+  </head>
+  <body>
+    <noscript
+      ><p>
+        LumiSciences a besoin de JavaScript pour afficher les cours et les labos. Active-le dans ton
+        navigateur puis recharge la page.
+      </p></noscript
+    >
+    <div class="top">
+      <div class="logo">
+        Edu<span style="color: var(--y)">Benin</span><span style="color: var(--r)">+</span
+        ><i style="background: var(--y)"></i><i style="background: var(--r)"></i
+        ><i style="background: var(--g)"></i>
+      </div>
+      <div class="seg" id="cls"></div>
+      <div class="xp" id="xp" aria-live="polite"></div>
+    </div>
+    <div class="hero">
+      <h1>Les sciences, <em>en vrai.</em></h1>
+      <p>
+        Manipule, change les valeurs, observe. Des labos et des schémas en 2D pour comprendre au
+        lieu d’apprendre par cœur.
+      </p>
+      <div class="tabs" id="tabs"></div>
+      <div class="mode" id="mode"></div>
+      <div class="kofi">
+        <span aria-hidden="true">🦎</span>
+        <p id="kofi">Salut, je suis Kofi ! Choisis un cours et gagne des XP.</p>
+      </div>
+    </div>
+    <main id="list"></main>
+    <script src="js/helpers.js"></script>
+    <script src="js/lessons/maths-pythagore.js"></script>
+    <script src="js/lessons/maths-volumes.js"></script>
+    <script src="js/lessons/pct-circuit.js"></script>
+    <script src="js/lessons/maths-parabole.js"></script>
+    <script src="js/lessons/pct-titrage.js"></script>
+    <script src="js/lessons/svt-photosynthese.js"></script>
+    <script src="js/lessons/svt-genetique.js"></script>
+    <script src="js/catalogue.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      if ("serviceWorker" in navigator && location.protocol != "file:")
+        navigator.serviceWorker.register("sw.js");
+    </script>
+  </body>
 </html>

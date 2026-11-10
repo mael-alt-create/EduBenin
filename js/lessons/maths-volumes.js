@@ -1,8 +1,116 @@
-function vol(st,ct,out){var k="Cylindre",r=4,h=8;
-function d(){var R=r*12,ry=R*.35,H=h*12,g,v,f,p=3.14,F='fill="var(--ac)" fill-opacity=".3" stroke="var(--ac)" stroke-width="2"';
-if(k=="Cylindre"){g='<ellipse cx="150" cy="'+(40+H)+'" rx="'+R+'" ry="'+ry+'" '+F+'/><rect x="'+(150-R)+'" y="40" width="'+2*R+'" height="'+H+'" fill="var(--ac)" fill-opacity=".3"/><line x1="'+(150-R)+'" y1="40" x2="'+(150-R)+'" y2="'+(40+H)+'" stroke="var(--ac)" stroke-width="2"/><line x1="'+(150+R)+'" y1="40" x2="'+(150+R)+'" y2="'+(40+H)+'" stroke="var(--ac)" stroke-width="2"/><ellipse cx="150" cy="40" rx="'+R+'" ry="'+ry+'" '+F+'/>';v=p*r*r*h;f="V = π × r² × h"}
-else if(k=="Cône"){g='<polygon points="150,40 '+(150-R)+','+(40+H)+' '+(150+R)+','+(40+H)+'" '+F+'/><ellipse cx="150" cy="'+(40+H)+'" rx="'+R+'" ry="'+ry+'" '+F+'/>';v=p*r*r*h/3;f="V = π × r² × h ÷ 3"}
-else{var q=r*14;g='<circle cx="150" cy="150" r="'+q+'" '+F+'/><ellipse cx="150" cy="150" rx="'+q+'" ry="'+q*.3+'" fill="none" stroke="var(--ac)" stroke-dasharray="5 5"/><line x1="150" y1="150" x2="'+(150+q)+'" y2="150" stroke="currentColor" stroke-width="2"/>';v=4*p*r*r*r/3;f="V = 4 ÷ 3 × π × r³"}
-st.innerHTML='<svg viewBox="0 0 300 300" role="img" aria-label="'+k+'">'+g+'<text x="150" y="292" text-anchor="middle" fill="currentColor" font-size="16" font-weight="800">r = '+r+' cm'+(k=="Sphère"?"":" · h = "+h+" cm")+'</text></svg>';
-out.innerHTML=f+" ≈ <b>"+v.toFixed(1)+" cm³</b> (avec π ≈ 3,14)"}
-sel(ct,"Solide",["Cylindre","Cône","Sphère"],k,function(v){k=v;d()});sl(ct,"Rayon r (cm)",2,8,1,r,function(v){r=v;d()});sl(ct,"Hauteur h (cm), sans effet sur la sphère",3,12,1,h,function(v){h=v;d()});d()}
+function vol(st, ct, out) {
+  var k = "Cylindre",
+    r = 4,
+    h = 8;
+  function d() {
+    var R = r * 12,
+      ry = R * 0.35,
+      H = h * 12,
+      g,
+      v,
+      f,
+      p = 3.14,
+      F = 'fill="var(--ac)" fill-opacity=".3" stroke="var(--ac)" stroke-width="2"';
+    if (k == "Cylindre") {
+      g =
+        '<ellipse cx="150" cy="' +
+        (40 + H) +
+        '" rx="' +
+        R +
+        '" ry="' +
+        ry +
+        '" ' +
+        F +
+        '/><rect x="' +
+        (150 - R) +
+        '" y="40" width="' +
+        2 * R +
+        '" height="' +
+        H +
+        '" fill="var(--ac)" fill-opacity=".3"/><line x1="' +
+        (150 - R) +
+        '" y1="40" x2="' +
+        (150 - R) +
+        '" y2="' +
+        (40 + H) +
+        '" stroke="var(--ac)" stroke-width="2"/><line x1="' +
+        (150 + R) +
+        '" y1="40" x2="' +
+        (150 + R) +
+        '" y2="' +
+        (40 + H) +
+        '" stroke="var(--ac)" stroke-width="2"/><ellipse cx="150" cy="40" rx="' +
+        R +
+        '" ry="' +
+        ry +
+        '" ' +
+        F +
+        "/>";
+      v = p * r * r * h;
+      f = "V = π × r² × h";
+    } else if (k == "Cône") {
+      g =
+        '<polygon points="150,40 ' +
+        (150 - R) +
+        "," +
+        (40 + H) +
+        " " +
+        (150 + R) +
+        "," +
+        (40 + H) +
+        '" ' +
+        F +
+        '/><ellipse cx="150" cy="' +
+        (40 + H) +
+        '" rx="' +
+        R +
+        '" ry="' +
+        ry +
+        '" ' +
+        F +
+        "/>";
+      v = (p * r * r * h) / 3;
+      f = "V = π × r² × h ÷ 3";
+    } else {
+      var q = r * 14;
+      g =
+        '<circle cx="150" cy="150" r="' +
+        q +
+        '" ' +
+        F +
+        '/><ellipse cx="150" cy="150" rx="' +
+        q +
+        '" ry="' +
+        q * 0.3 +
+        '" fill="none" stroke="var(--ac)" stroke-dasharray="5 5"/><line x1="150" y1="150" x2="' +
+        (150 + q) +
+        '" y2="150" stroke="currentColor" stroke-width="2"/>';
+      v = (4 * p * r * r * r) / 3;
+      f = "V = 4 ÷ 3 × π × r³";
+    }
+    st.innerHTML =
+      '<svg viewBox="0 0 300 300" role="img" aria-label="' +
+      k +
+      '">' +
+      g +
+      '<text x="150" y="292" text-anchor="middle" fill="currentColor" font-size="16" font-weight="800">r = ' +
+      r +
+      " cm" +
+      (k == "Sphère" ? "" : " · h = " + h + " cm") +
+      "</text></svg>";
+    out.innerHTML = f + " ≈ <b>" + v.toFixed(1) + " cm³</b> (avec π ≈ 3,14)";
+  }
+  sel(ct, "Solide", ["Cylindre", "Cône", "Sphère"], k, function (v) {
+    k = v;
+    d();
+  });
+  sl(ct, "Rayon r (cm)", 2, 8, 1, r, function (v) {
+    r = v;
+    d();
+  });
+  sl(ct, "Hauteur h (cm), sans effet sur la sphère", 3, 12, 1, h, function (v) {
+    h = v;
+    d();
+  });
+  d();
+}

@@ -13,6 +13,8 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: server/package-lock.json
+      - name: Format du code (Prettier)
+        run: npx --yes prettier@3.3.3 --check .
       - name: Syntaxe du front
         run: for f in js/*.js js/lessons/*.js sw.js; do node --check "$f"; done
       - name: Catalogue synchronisé avec l'API

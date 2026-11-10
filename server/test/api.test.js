@@ -12,8 +12,10 @@ before(async () => {
   base = `http://localhost:${srv.address().port}`;
 });
 after(() => srv.close());
-const call = (path, opts = {}) => fetch(base + path, { ...opts, headers: { "content-type": "application/json", ...opts.headers } });
-const post = (path, body, headers = {}) => call(path, { method: "POST", body: JSON.stringify(body), headers });
+const call = (path, opts = {}) =>
+  fetch(base + path, { ...opts, headers: { "content-type": "application/json", ...opts.headers } });
+const post = (path, body, headers = {}) =>
+  call(path, { method: "POST", body: JSON.stringify(body), headers });
 
 test("santé de l'API", async () => {
   const r = await call("/api/health");
@@ -25,7 +27,10 @@ test("filtrage par classe, matière et mot-clé", async () => {
   const list = await (await call("/api/courses?classe=3&matiere=maths")).json();
   assert.equal(list.length, 3);
   const found = await (await call("/api/courses?q=pythagore")).json();
-  assert.deepEqual(found.map((k) => k.id), ["m2"]);
+  assert.deepEqual(
+    found.map((k) => k.id),
+    ["m2"],
+  );
 });
 
 test("le détail d'un cours ne révèle pas la bonne réponse", async () => {
@@ -52,9 +57,12 @@ test("réponse fausse : pas de points ; bonne réponse : points une seule fois",
 test("vrai ou faux : 5 points par affirmation, +10 quand tout est juste", async () => {
   const h = { "x-device-id": DEV };
   const vals = [true, true, false];
-  let total = 0, last;
+  let total = 0,
+    last;
   for (let i = 0; i < 3; i++) {
-    last = await (await post("/api/courses/p2/answer", { affirmation: i, valeur: vals[i] }, h)).json();
+    last = await (
+      await post("/api/courses/p2/answer", { affirmation: i, valeur: vals[i] }, h)
+    ).json();
     assert.equal(last.correct, true);
     total += last.points;
   }
@@ -65,6 +73,9 @@ test("vrai ou faux : 5 points par affirmation, +10 quand tout est juste", async 
 test("erreurs : cours inconnu, identifiant invalide, corps invalide", async () => {
   assert.equal((await call("/api/courses/zzz")).status, 404);
   assert.equal((await call("/api/progress")).status, 400);
-  assert.equal((await post("/api/courses/m2/answer", { choix: 0 }, { "x-device-id": "pas-un-uuid" })).status, 400);
+  assert.equal(
+    (await post("/api/courses/m2/answer", { choix: 0 }, { "x-device-id": "pas-un-uuid" })).status,
+    400,
+  );
   assert.equal((await post("/api/courses/m2/answer", { choix: 99 })).status, 400);
 });
