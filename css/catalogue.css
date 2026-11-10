@@ -32,3 +32,10 @@ main.grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,310px),1fr));al
 .qz .b{margin-bottom:6px}
 .good{outline:3px solid var(--ac)}
 .bad{opacity:.45;text-decoration:line-through}
+.tabs2{display:flex;gap:8px;margin-bottom:10px}
+.tabs2 button{background:none;border:2px solid var(--line);border-radius:20px;padding:5px 14px;font-weight:800}
+.tabs2 button.on{background:var(--ac);color:#111;border-color:var(--ac)}
+.act{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0 0}
+.lnk,.nx{font:inherit;font-weight:800;color:var(--fg);border:2px solid var(--line);border-radius:20px;padding:6px 14px;text-decoration:none;background:none;cursor:pointer}
+.lnk:hover,.nx:hover{border-color:var(--ac)}
+noscript p{margin:0;padding:16px 5vw;background:var(--card)}

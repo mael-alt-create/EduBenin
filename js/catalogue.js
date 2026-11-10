@@ -13,7 +13,7 @@ var K=[
 {id:"s3",c:"T",s:"svt",e:"🧬",t:"Génétique : dominant ou récessif",p:"vf",m:2,h:"Vrai ou faux sur les allèles",v:[["Un individu Aa exprime l’allèle dominant A.",true,"L’allèle dominant masque le récessif chez l’hétérozygote."],["Deux parents Aa ne peuvent avoir que des enfants Aa.",false,"Ils peuvent avoir AA, Aa ou aa, dans les proportions 1/4, 1/2 et 1/4."],["Le caractère récessif ne se voit que chez les individus aa.",true,"Il faut deux allèles récessifs pour qu’il s’exprime."]]},
 {id:"s4",c:"T",s:"svt",e:"✂️",t:"Mitose et méiose",p:"mn",m:2,h:"Se copier ou se mélanger",b:["Mitose : je me copie. Méiose : je me mélange et je me coupe en deux.","La mitose donne 2 cellules identiques (croissance, réparation). La méiose donne 4 cellules avec deux fois moins de chromosomes : les gamètes."],q:["Combien de cellules produit une méiose complète ?",["2","4","8","1"],1,"Une cellule donne 4 gamètes à moitié de chromosomes."]}
 ];
-var TP={ex:"Fiche express",an:"Analogie",mn:"Mnémo",vf:"Vrai ou faux"},NV=["Curieux","Explorateur","Inventeur","Savant","Génie"],M="fun",Q="",XP=0,DN={};
+var TP={ex:"Fiche express",an:"Analogie",mn:"Mnémo",vf:"Vrai ou faux"},NV=["Curieux","Explorateur","Inventeur","Savant","Génie"],M="fun",Q="",OP="",XP=0,DN={};
 try{var R=JSON.parse(localStorage.getItem("lumi")||"{}");XP=R.xp||0;DN=R.dn||{}}catch(e){}
 function save(){try{localStorage.setItem("lumi",JSON.stringify({xp:XP,dn:DN}))}catch(e){}}
 function say(m){document.getElementById("kofi").textContent=m;var s=document.querySelector(".kofi span");s.classList.remove("hop");void s.offsetWidth;s.classList.add("hop")}
@@ -24,15 +24,24 @@ function quiz(k,el,d){var q=k.q,w=document.createElement("div"),r=document.creat
 q[1].forEach(function(o,i){var b=document.createElement("button");b.className="b";b.textContent=o;b.onclick=function(){if(i==q[2]){b.classList.add("good");r.textContent="✅ "+q[3];var f=!DN[k.id];done(k,d);say(f?"Bravo ! +10 XP 🎉":"Bien joué, tu maîtrises !")}else{b.classList.add("bad");b.disabled=true;say("Presque ! Réessaie, tu y es presque.")}};w.append(b)});w.append(r);el.append(w)}
 function vf(k,el,d){k.v.forEach(function(x,i){var p=document.createElement("div"),id=k.id+"v"+i,r=document.createElement("small");p.className="qz";p.innerHTML="<p>"+x[0]+"</p>";
 [true,false].forEach(function(v){var b=document.createElement("button");b.className="b";b.textContent=v?"Vrai":"Faux";b.onclick=function(){if(v==x[1]){if(!DN[id]){DN[id]=1;XP+=5}r.textContent="✅ "+x[2];b.classList.add("good");say("Exact ! +5 XP ⭐");save();upd();if(k.v.every(function(y,j){return DN[k.id+"v"+j]}))done(k,d)}else{b.classList.add("bad");r.textContent="Hmm, réfléchis encore…";say("Pas tout à fait, retente !")}};p.append(b)});p.append(r);el.append(p)})}
-function fun(ls){var A=K.filter(function(k){return k.c==C&&k.s==S}),L2=A.filter(function(k){return (k.t+k.h).toLowerCase().indexOf(Q.toLowerCase())>-1}),n=A.filter(function(k){return DN[k.id]}).length,hd=document.createElement("p");
-ls.className="grid "+S;hd.className="cnt";hd.style.gridColumn="1/-1";hd.textContent=L2.length?L2.length+" cours · "+n+"/"+A.length+" terminés":"Aucun cours trouvé. Essaie un autre mot.";ls.append(hd);
-L2.forEach(function(k){var d=document.createElement("details"),b=k.b||[],h="";d.className="kc";
-d.innerHTML='<summary><span class="em">'+k.e+'</span><span><b>'+k.t+'</b><small>'+k.h+'</small><small class="tg">'+TP[k.p]+' · '+k.m+' min</small></span><span class="ok">'+(DN[k.id]?"✓":"")+'</span></summary><div class="kb"></div>';
-var el=d.querySelector(".kb");
+function body(k,d){var el=d.querySelector(".kb"),b=k.b||[],h="",A=K.filter(function(x){return x.c==k.c&&x.s==k.s}),nx=A[A.indexOf(k)+1],u=location.href.split("#")[0]+"#cours-"+k.id;
 if(k.p=="ex")h="<ul>"+b.slice(0,-1).map(function(x){return "<li>"+x+"</li>"}).join("")+"</ul><p class=\"tip\">💡 "+b[b.length-1]+"</p>";
 if(k.p=="an")h="<p class=\"story\">"+b[0]+"</p><p><b>Le vrai nom :</b> "+b[1]+"</p>";
 if(k.p=="mn")h="<p class=\"slogan\">« "+b[0]+" »</p><p>"+b[1]+"</p>";
-el.innerHTML=h;if(k.p=="vf")vf(k,el,d);else quiz(k,el,d);ls.append(d)})}
+if(k.p=="vf")h="<p>Trois affirmations à trier. Passe à l’onglet Défi pour répondre.</p>";
+el.innerHTML='<div class="tabs2"><button class="on">📖 Comprendre</button><button>🎯 Défi</button></div><div class="pn">'+h+'</div><div class="pn" hidden></div><p class="act"><a class="lnk" target="_blank" rel="noopener" href="https://wa.me/?text='+encodeURIComponent(k.t+" sur LumiSciences : "+u)+'">📲 Partager sur WhatsApp</a></p>';
+var T=el.querySelectorAll(".tabs2 button"),P2=el.querySelectorAll(".pn");
+T.forEach(function(t,i){t.onclick=function(){T.forEach(function(x,j){x.classList.toggle("on",i==j)});P2.forEach(function(p,j){p.hidden=i!=j})}});
+if(k.p=="vf")vf(k,P2[1],d);else quiz(k,P2[1],d);
+if(nx){var n=document.createElement("button");n.className="nx";n.textContent="Cours suivant : "+nx.t+" →";n.onclick=function(){d.open=false;var t=document.getElementById("c-"+nx.id);t.open=true;t.scrollIntoView({behavior:"smooth",block:"start"})};el.querySelector(".act").append(n)}}
+function fun(ls){var A=K.filter(function(k){return k.c==C&&k.s==S}),L2=A.filter(function(k){return (k.t+k.h).toLowerCase().indexOf(Q.toLowerCase())>-1}),n=A.filter(function(k){return DN[k.id]}).length,hd=document.createElement("p");
+ls.className="grid "+S;hd.className="cnt";hd.style.gridColumn="1/-1";hd.textContent=L2.length?L2.length+" cours · "+n+"/"+A.length+" terminés":"Aucun cours trouvé. Essaie un autre mot.";ls.append(hd);
+L2.forEach(function(k){var d=document.createElement("details");d.className="kc";d.id="c-"+k.id;
+d.innerHTML='<summary><span class="em">'+k.e+'</span><span><b>'+(A.indexOf(k)+1)+". "+k.t+'</b><small>'+k.h+'</small><small class="tg">'+TP[k.p]+' · '+k.m+' min</small></span><span class="ok">'+(DN[k.id]?"✓":"")+'</span></summary><div class="kb"></div>';
+d.addEventListener("toggle",function(){if(!d.open)return;ls.querySelectorAll("details[open]").forEach(function(o){if(o!==d)o.open=false});if(!d.dataset.r){d.dataset.r=1;body(k,d)}try{history.replaceState(null,"","#cours-"+k.id)}catch(e){}});
+ls.append(d)});
+if(OP){var t=document.getElementById("c-"+OP);OP="";if(t){t.open=true;t.scrollIntoView()}}}
 (function(){var m=document.getElementById("mode"),i=document.createElement("input");
 [["fun","🎮 Cours fun"],["lab","🔬 Labos"]].forEach(function(x){var b=document.createElement("button");b.dataset.m=x[0];b.textContent=x[1];b.onclick=function(){M=x[0];show()};m.append(b)});
 i.placeholder="🔎 Chercher un cours";i.setAttribute("aria-label","Chercher un cours");i.oninput=function(){Q=i.value;M="fun";show()};m.append(i)})();
+(function(){var h=location.hash.slice(1),k=K.filter(function(x){return "cours-"+x.id==h})[0];if(k){C=k.c;S=k.s;M="fun";OP=k.id}})();
