@@ -1,304 +1,108 @@
-var K = [
-  {
-    id: "m1",
-    c: "3",
-    s: "maths",
-    e: "🌳",
-    t: "Thalès",
-    p: "an",
-    m: 2,
-    h: "Mesurer un manguier sans le grimper",
-    b: [
-      "Imagine : un bâton de 1 m a une ombre de 2 m. L’ombre du manguier mesure 14 m. Tout est à l’échelle : le manguier mesure 7 m !",
-      "Thalès : quand deux droites parallèles coupent deux sécantes, les longueurs sont proportionnelles : AM/AB = AN/AC = MN/BC.",
-    ],
-    q: [
-      "Bâton de 1 m, ombre de 2 m. Un arbre a une ombre de 10 m. Quelle est sa hauteur ?",
-      ["4 m", "5 m", "10 m", "20 m"],
-      1,
-      "1 ÷ 2 = h ÷ 10, donc h = 5 m.",
-    ],
-  },
-  {
-    id: "m2",
-    c: "3",
-    s: "maths",
-    e: "📐",
-    t: "Pythagore",
-    p: "mn",
-    m: 1,
-    h: "Le grand carré mange les deux petits",
-    b: [
-      "Le grand carré mange les deux petits.",
-      "Dans un triangle rectangle, le carré de l’hypoténuse (le côté en face de l’angle droit) est égal à la somme des carrés des deux autres côtés : a² + b² = c².",
-    ],
-    q: [
-      "Côtés de l’angle droit : 3 et 4. Combien mesure l’hypoténuse ?",
-      ["5", "7", "6", "25"],
-      0,
-      "9 + 16 = 25, et √25 = 5.",
-    ],
-  },
-  {
-    id: "m3",
-    c: "3",
-    s: "maths",
-    e: "🧊",
-    t: "Prismes, pyramides, cylindres",
-    p: "ex",
-    m: 2,
-    h: "Les formules de volume en 3 lignes",
-    b: [
-      "Prisme droit : V = aire de la base × hauteur.",
-      "Pyramide : V = aire de la base × hauteur ÷ 3.",
-      "Cylindre : V = π × r² × h. Le cône vaut un tiers du cylindre.",
-      "Pyramide ou cône : toujours un tiers du « gros » solide.",
-    ],
-    q: [
-      "Une pyramide a une base de 12 cm² et une hauteur de 5 cm. Son volume ?",
-      ["60 cm³", "20 cm³", "17 cm³", "30 cm³"],
-      1,
-      "12 × 5 ÷ 3 = 20 cm³.",
-    ],
-  },
-  {
-    id: "p1",
-    c: "3",
-    s: "pct",
-    e: "💡",
-    t: "Tension, courant, résistance",
-    p: "an",
-    m: 2,
-    h: "Un circuit, c’est un tuyau d’eau",
-    b: [
-      "Imagine un tuyau d’eau : la pile est la pompe (la tension), les fils sont les tuyaux, le courant est le débit de l’eau et la lampe est ce qui freine un peu l’eau.",
-      "Loi d’Ohm : U = R × I, avec U en volts (V), R en ohms (Ω) et I en ampères (A).",
-    ],
-    q: [
-      "U = 12 V et R = 4 Ω. Quelle est l’intensité I ?",
-      ["3 A", "48 A", "8 A", "16 A"],
-      0,
-      "I = U ÷ R = 12 ÷ 4 = 3 A.",
-    ],
-  },
-  {
-    id: "p2",
-    c: "3",
-    s: "pct",
-    e: "🔌",
-    t: "Série ou dérivation ?",
-    p: "vf",
-    m: 2,
-    h: "Vrai ou faux sur les montages",
-    v: [
-      [
-        "En série, si une lampe grille, toute la branche s’éteint.",
-        true,
-        "Il n’y a qu’un seul chemin : il est coupé.",
-      ],
-      [
-        "En dérivation, chaque branche reçoit la tension de la pile.",
-        true,
-        "Les branches sont montées entre les deux mêmes bornes.",
-      ],
-      [
-        "On branche l’ampèremètre en dérivation pour mesurer la tension.",
-        false,
-        "L’ampèremètre se monte en série et mesure le courant ; le voltmètre se monte en dérivation.",
-      ],
-    ],
-  },
-  {
-    id: "s1",
-    c: "3",
-    s: "svt",
-    e: "🌿",
-    t: "La photosynthèse",
-    p: "ex",
-    m: 2,
-    h: "La cuisine solaire des plantes",
-    b: [
-      "Les feuilles captent la lumière grâce à la chlorophylle.",
-      "Avec l’eau et le CO₂, elles fabriquent du glucose.",
-      "Elles libèrent du dioxygène (O₂) : c’est l’air que tu respires.",
-      "Lumière + eau + CO₂ → sucre + O₂ : une cuisine solaire !",
-    ],
-    q: [
-      "Quel gaz une plante libère-t-elle pendant la photosynthèse ?",
-      ["Dioxyde de carbone", "Dioxygène", "Azote", "Hydrogène"],
-      1,
-      "Les bulles de la plante aquatique, c’est du dioxygène.",
-    ],
-  },
-  {
-    id: "s2",
-    c: "3",
-    s: "svt",
-    e: "🏙️",
-    t: "La cellule",
-    p: "an",
-    m: 2,
-    h: "Une mini-ville vivante",
-    b: [
-      "Imagine une ville : le noyau est la mairie qui garde les plans, la membrane est la clôture qui contrôle les entrées, le cytoplasme est la place où tout se passe.",
-      "La cellule est l’unité du vivant : le noyau contient l’information génétique (les chromosomes).",
-    ],
-    q: [
-      "Quelle partie de la cellule contient les chromosomes ?",
-      ["Le noyau", "La membrane", "Le cytoplasme", "La paroi"],
-      0,
-      "Le noyau garde l’ADN, comme la mairie garde les plans.",
-    ],
-  },
-  {
-    id: "m4",
-    c: "T",
-    s: "maths",
-    e: "🎢",
-    t: "Second degré",
-    p: "mn",
-    m: 2,
-    h: "Delta décide du nombre de solutions",
-    b: [
-      "Delta décide combien de solutions on a.",
-      "Pour ax² + bx + c = 0, on calcule Δ = b² − 4ac. Δ > 0 : deux racines ; Δ = 0 : une racine ; Δ < 0 : aucune. Puis x = (−b ± √Δ) ÷ 2a.",
-    ],
-    q: [
-      "Quelles sont les racines de x² − 5x + 6 = 0 ?",
-      ["1 et 6", "2 et 3", "−2 et −3", "5 et 6"],
-      1,
-      "Δ = 25 − 24 = 1, donc x = (5 ± 1) ÷ 2, soit 2 et 3.",
-    ],
-  },
-  {
-    id: "m5",
-    c: "T",
-    s: "maths",
-    e: "📈",
-    t: "Dérivée",
-    p: "ex",
-    m: 2,
-    h: "Le compteur de vitesse d’une courbe",
-    b: [
-      "f’(x) donne la pente de la courbe au point d’abscisse x.",
-      "Si f’(x) > 0, la fonction monte ; si f’(x) < 0, elle descend.",
-      "Règle : (xⁿ)’ = n × xⁿ⁻¹.",
-      "La dérivée est le compteur de vitesse de la courbe.",
-    ],
-    q: [
-      "Quelle est la dérivée de x³ ?",
-      ["3x²", "x²", "3x", "x⁴ ÷ 4"],
-      0,
-      "(xⁿ)’ = n × xⁿ⁻¹ avec n = 3.",
-    ],
-  },
-  {
-    id: "p3",
-    c: "T",
-    s: "pct",
-    e: "⚗️",
-    t: "Titrage acide-base",
-    p: "an",
-    m: 2,
-    h: "Verser goutte à goutte jusqu’à l’égalité",
-    b: [
-      "Imagine deux équipes de tir à la corde : l’acide et la base. Tu ajoutes des joueurs à la base, goutte à goutte, jusqu’à l’égalité parfaite : c’est l’équivalence.",
-      "Pour un acide fort et une base forte (coefficients 1) : Ca × Va = Cb × Vb à l’équivalence. Le pH vaut alors 7.",
-    ],
-    q: [
-      "Ca = 0,1 mol/L ; Va = 20 mL ; Cb = 0,1 mol/L. Quel volume Vb faut-il ?",
-      ["10 mL", "20 mL", "40 mL", "2 mL"],
-      1,
-      "Ca × Va = Cb × Vb, donc Vb = 20 mL.",
-    ],
-  },
-  {
-    id: "p4",
-    c: "T",
-    s: "pct",
-    e: "🚀",
-    t: "Lois de Newton",
-    p: "ex",
-    m: 2,
-    h: "Force, masse, accélération",
-    b: [
-      "1re loi : sans force (ou si elles s’annulent), le mouvement ne change pas.",
-      "2e loi : ΣF = m × a.",
-      "3e loi : action et réaction sont égales et opposées.",
-      "Plus c’est lourd, plus c’est dur à accélérer.",
-    ],
-    q: [
-      "m = 2 kg et a = 3 m/s². Quelle est la force F ?",
-      ["5 N", "6 N", "1,5 N", "0,67 N"],
-      1,
-      "F = m × a = 2 × 3 = 6 N.",
-    ],
-  },
-  {
-    id: "s3",
-    c: "T",
-    s: "svt",
-    e: "🧬",
-    t: "Génétique : dominant ou récessif",
-    p: "vf",
-    m: 2,
-    h: "Vrai ou faux sur les allèles",
-    v: [
-      [
-        "Un individu Aa exprime l’allèle dominant A.",
-        true,
-        "L’allèle dominant masque le récessif chez l’hétérozygote.",
-      ],
-      [
-        "Deux parents Aa ne peuvent avoir que des enfants Aa.",
-        false,
-        "Ils peuvent avoir AA, Aa ou aa, dans les proportions 1/4, 1/2 et 1/4.",
-      ],
-      [
-        "Le caractère récessif ne se voit que chez les individus aa.",
-        true,
-        "Il faut deux allèles récessifs pour qu’il s’exprime.",
-      ],
-    ],
-  },
-  {
-    id: "s4",
-    c: "T",
-    s: "svt",
-    e: "✂️",
-    t: "Mitose et méiose",
-    p: "mn",
-    m: 2,
-    h: "Se copier ou se mélanger",
-    b: [
-      "Mitose : je me copie. Méiose : je me mélange et je me coupe en deux.",
-      "La mitose donne 2 cellules identiques (croissance, réparation). La méiose donne 4 cellules avec deux fois moins de chromosomes : les gamètes.",
-    ],
-    q: [
-      "Combien de cellules produit une méiose complète ?",
-      ["2", "4", "8", "1"],
-      1,
-      "Une cellule donne 4 gamètes à moitié de chromosomes.",
-    ],
-  },
-];
+var API = "http://localhost:3000/api";
+var K = []; // chargé depuis l'API au démarrage
 var TP = { ex: "Fiche express", an: "Analogie", mn: "Mnémo", vf: "Vrai ou faux" },
   NV = ["Curieux", "Explorateur", "Inventeur", "Savant", "Génie"],
   M = "fun",
   Q = "",
   OP = "",
   XP = 0,
-  DN = {};
-try {
-  var R = JSON.parse(localStorage.getItem("lumi") || "{}");
-  XP = R.xp || 0;
-  DN = R.dn || {};
-} catch (e) {}
-function save() {
-  try {
-    localStorage.setItem("lumi", JSON.stringify({ xp: XP, dn: DN }));
-  } catch (e) {}
+  DN = {},
+  DEV = "";
+
+/* ---- Device ID (UUID) pour le suivi de progression côté API ---- */
+function uuid() {
+  if (crypto.randomUUID) return crypto.randomUUID();
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    var r = (Math.random() * 16) | 0;
+    return (c == "x" ? r : (r & 3) | 8).toString(16);
+  });
 }
+try {
+  DEV = localStorage.getItem("lumi-dev") || "";
+  if (!DEV) {
+    DEV = uuid();
+    localStorage.setItem("lumi-dev", DEV);
+  }
+} catch (e) {}
+
+/* ---- Helper fetch API ---- */
+function api(path, opts) {
+  var headers = { "Content-Type": "application/json" };
+  if (DEV) headers["X-Device-Id"] = DEV;
+  return fetch(API + path, Object.assign({ headers: headers }, opts || {})).then(function (r) {
+    return r.json();
+  });
+}
+
+/* ---- Chargement initial : liste des cours ---- */
+function loadCourses() {
+  return api("/courses").then(function (list) {
+    K = list.map(function (c) {
+      return {
+        id: c.id,
+        c: c.classe,
+        s: c.matiere,
+        e: c.emoji,
+        t: c.titre,
+        p: c.modele,
+        m: c.minutes,
+        h: c.accroche,
+      };
+    });
+  });
+}
+
+/* ---- Chargement initial : progression (XP, cours terminés) ---- */
+function loadProgress() {
+  if (!DEV) return Promise.resolve();
+  return api("/progress")
+    .then(function (p) {
+      XP = p.xp || 0;
+      DN = {};
+      (p.termines || []).forEach(function (id) {
+        DN[id] = 1;
+      });
+    })
+    .catch(function () {});
+}
+
+/* ---- Fetch du détail d'un cours (contenu, question/affirmations) ---- */
+function loadDetail(k) {
+  if (k._loaded) return Promise.resolve(k);
+  return api("/courses/" + k.id).then(function (d) {
+    k.b = d.contenu || [];
+    if (d.affirmations) {
+      k.v = d.affirmations.map(function (a) {
+        return [a];
+      });
+    }
+    if (d.question) {
+      k.q = [d.question.texte, d.question.choix];
+    }
+    k._loaded = true;
+    return k;
+  });
+}
+
+/* ---- Sync XP et cours terminés depuis une réponse API ---- */
+function syncFromApi(res) {
+  if (res.xp !== undefined) XP = res.xp;
+  if (res.termines) {
+    DN = {};
+    res.termines.forEach(function (id) {
+      DN[id] = 1;
+    });
+  }
+  upd();
+}
+
+/* ---- Coche un cours dans l'UI ---- */
+function markDone(d) {
+  var o = d.querySelector(".ok");
+  if (o) o.textContent = "✓";
+}
+
+/* ---- Mascotte Kofi ---- */
 function say(m) {
   document.getElementById("kofi").textContent = m;
   var s = document.querySelector(".kofi span");
@@ -306,6 +110,8 @@ function say(m) {
   void s.offsetWidth;
   s.classList.add("hop");
 }
+
+/* ---- Barre XP / niveau ---- */
 function upd() {
   var l = Math.min(4, Math.floor(XP / 50));
   document.getElementById("xp").innerHTML =
@@ -322,18 +128,10 @@ function upd() {
     b.setAttribute("aria-pressed", b.dataset.m == M);
   });
 }
-function done(k, d) {
-  if (!DN[k.id]) {
-    DN[k.id] = 1;
-    XP += 10;
-  }
-  save();
-  upd();
-  var o = d.querySelector(".ok");
-  if (o) o.textContent = "✓";
-}
+
+/* ---- Quiz (QCM) : POST la réponse à l'API ---- */
 function quiz(k, el, d) {
-  var q = k.q,
+  var q = k.q, // [texte, choix[]]
     w = document.createElement("div"),
     r = document.createElement("p");
   w.className = "qz";
@@ -343,27 +141,34 @@ function quiz(k, el, d) {
     b.className = "b";
     b.textContent = o;
     b.onclick = function () {
-      if (i == q[2]) {
-        b.classList.add("good");
-        r.textContent = "✅ " + q[3];
-        var f = !DN[k.id];
-        done(k, d);
-        say(f ? "Bravo ! +10 XP 🎉" : "Bien joué, tu maîtrises !");
-      } else {
-        b.classList.add("bad");
-        b.disabled = true;
-        say("Presque ! Réessaie, tu y es presque.");
-      }
+      api("/courses/" + k.id + "/answer", {
+        method: "POST",
+        body: JSON.stringify({ choix: i }),
+      }).then(function (res) {
+        if (res.correct) {
+          b.classList.add("good");
+          r.textContent = "✅ " + res.explication;
+          var wasNew = !DN[k.id];
+          syncFromApi(res);
+          markDone(d);
+          say(wasNew ? "Bravo ! +10 XP 🎉" : "Bien joué, tu maîtrises !");
+        } else {
+          b.classList.add("bad");
+          b.disabled = true;
+          say("Presque ! Réessaie, tu y es presque.");
+        }
+      });
     };
     w.append(b);
   });
   w.append(r);
   el.append(w);
 }
+
+/* ---- Vrai/Faux : POST chaque affirmation à l'API ---- */
 function vf(k, el, d) {
   k.v.forEach(function (x, i) {
     var p = document.createElement("div"),
-      id = k.id + "v" + i,
       r = document.createElement("small");
     p.className = "qz";
     p.innerHTML = "<p>" + x[0] + "</p>";
@@ -372,27 +177,22 @@ function vf(k, el, d) {
       b.className = "b";
       b.textContent = v ? "Vrai" : "Faux";
       b.onclick = function () {
-        if (v == x[1]) {
-          if (!DN[id]) {
-            DN[id] = 1;
-            XP += 5;
+        api("/courses/" + k.id + "/answer", {
+          method: "POST",
+          body: JSON.stringify({ affirmation: i, valeur: v }),
+        }).then(function (res) {
+          if (res.correct) {
+            r.textContent = "✅ " + res.explication;
+            b.classList.add("good");
+            syncFromApi(res);
+            markDone(d);
+            say("Exact ! +5 XP ⭐");
+          } else {
+            b.classList.add("bad");
+            r.textContent = "Hmm, réfléchis encore…";
+            say("Pas tout à fait, retente !");
           }
-          r.textContent = "✅ " + x[2];
-          b.classList.add("good");
-          say("Exact ! +5 XP ⭐");
-          save();
-          upd();
-          if (
-            k.v.every(function (y, j) {
-              return DN[k.id + "v" + j];
-            })
-          )
-            done(k, d);
-        } else {
-          b.classList.add("bad");
-          r.textContent = "Hmm, réfléchis encore…";
-          say("Pas tout à fait, retente !");
-        }
+        });
       };
       p.append(b);
     });
@@ -400,6 +200,8 @@ function vf(k, el, d) {
     el.append(p);
   });
 }
+
+/* ---- Construction du contenu d'un cours (onglets Comprendre / Défi) ---- */
 function body(k, d) {
   var el = d.querySelector(".kb"),
     b = k.b || [],
@@ -423,7 +225,7 @@ function body(k, d) {
       "</p>";
   if (k.p == "an") h = '<p class="story">' + b[0] + "</p><p><b>Le vrai nom :</b> " + b[1] + "</p>";
   if (k.p == "mn") h = '<p class="slogan">« ' + b[0] + " »</p><p>" + b[1] + "</p>";
-  if (k.p == "vf") h = "<p>Trois affirmations à trier. Passe à l’onglet Défi pour répondre.</p>";
+  if (k.p == "vf") h = "<p>Trois affirmations à trier. Passe à l'onglet Défi pour répondre.</p>";
   el.innerHTML =
     '<div class="tabs2"><button class="on">📖 Comprendre</button><button>🎯 Défi</button></div><div class="pn">' +
     h +
@@ -457,6 +259,8 @@ function body(k, d) {
     el.querySelector(".act").append(n);
   }
 }
+
+/* ---- Grille des cours (mode "fun") ---- */
 function fun(ls) {
   var A = K.filter(function (k) {
       return k.c == C && k.s == S;
@@ -494,7 +298,7 @@ function fun(ls) {
       k.m +
       ' min</small></span><span class="ok">' +
       (DN[k.id] ? "✓" : "") +
-      '</span></summary><div class="kb"></div>';
+      '</span></summary><div class="kb"><p>Chargement…</p></div>';
     d.addEventListener("toggle", function () {
       if (!d.open) return;
       ls.querySelectorAll("details[open]").forEach(function (o) {
@@ -502,7 +306,9 @@ function fun(ls) {
       });
       if (!d.dataset.r) {
         d.dataset.r = 1;
-        body(k, d);
+        loadDetail(k).then(function () {
+          body(k, d);
+        });
       }
       try {
         history.replaceState(null, "", "#cours-" + k.id);
@@ -519,6 +325,33 @@ function fun(ls) {
     }
   }
 }
+
+/* ---- Init : charger les cours et la progression, puis afficher ---- */
+function init() {
+  loadCourses()
+    .then(function () {
+      // Gestion du hash (cours spécifique dans l'URL)
+      var h = location.hash.slice(1),
+        k = K.filter(function (x) {
+          return "cours-" + x.id == h;
+        })[0];
+      if (k) {
+        C = k.c;
+        S = k.s;
+        M = "fun";
+        OP = k.id;
+      }
+      return loadProgress();
+    })
+    .then(function () {
+      show();
+    })
+    .catch(function () {
+      show();
+    });
+}
+
+/* ---- Boutons mode + recherche ---- */
 (function () {
   var m = document.getElementById("mode"),
     i = document.createElement("input");
@@ -543,16 +376,4 @@ function fun(ls) {
     show();
   };
   m.append(i);
-})();
-(function () {
-  var h = location.hash.slice(1),
-    k = K.filter(function (x) {
-      return "cours-" + x.id == h;
-    })[0];
-  if (k) {
-    C = k.c;
-    S = k.s;
-    M = "fun";
-    OP = k.id;
-  }
 })();

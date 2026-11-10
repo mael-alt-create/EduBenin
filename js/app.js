@@ -101,4 +101,4 @@ function show() {
     l.f(e.querySelector(".stage"), e.querySelector(".ctl"), e.querySelector(".out"));
   });
 }
-show();
+init();
