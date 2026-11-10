@@ -1,0 +1,26 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: server/package-lock.json
+      - name: Syntaxe du front
+        run: for f in js/*.js js/lessons/*.js sw.js; do node --check "$f"; done
+      - name: Catalogue synchronisé avec l'API
+        run: |
+          node scripts/export-courses.mjs
+          git diff --exit-code server/data/courses.json
+      - name: Tests de l'API
+        working-directory: server
+        run: |
+          npm ci
+          npm test

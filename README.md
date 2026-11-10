@@ -33,6 +33,9 @@ js/helpers.js         état (classe, matière) et composants (curseur, liste, bo
 js/lessons/*.js       une leçon = une fonction (schéma SVG + contrôles + résultat)
 js/catalogue.js       catalogue de cours fun (modèles, quiz, XP, mascotte)
 js/app.js             liste des labos et affichage
+sw.js                 mode hors ligne (service worker)
+server/               API Node.js (Express) + PostgreSQL
+scripts/              export du catalogue vers l’API
 ```
 
 ## Ajouter une leçon
@@ -52,3 +55,23 @@ Thalès et trigonométrie, solides en perspective, optique et mécanique en PCT,
 ## Catalogue de cours fun
 
 Chaque cours est un objet du tableau `K` (`js/catalogue.js`) : `{id, c, s, e, t, p, m, h, b, q}`. `p` choisit le modèle : `ex` (fiche express), `an` (analogie), `mn` (mnémo), `vf` (vrai ou faux, avec `v` à la place de `b` et `q`). Les points d'expérience et les cours terminés sont gardés dans le navigateur (localStorage).
+
+## API (dossier `server/`)
+
+```bash
+cd server && npm install && cp .env.example .env && npm start
+```
+
+Sans `DATABASE_URL`, la progression est gardée en mémoire. Avec PostgreSQL, le schéma de `db/schema.sql` est créé au démarrage (non testé sur une vraie base pour l'instant).
+
+| Route | Rôle |
+|---|---|
+| `GET /api/health` | état de l’API |
+| `GET /api/courses?classe=3&matiere=maths&q=` | catalogue filtré |
+| `GET /api/courses/:id` | un cours, sans les bonnes réponses |
+| `POST /api/courses/:id/answer` | corrige une réponse (`{choix}` ou `{affirmation, valeur}`) et attribue les points |
+| `GET /api/progress` | XP et cours terminés de l’appareil |
+
+La progression est liée à un UUID anonyme envoyé dans l’en-tête `X-Device-Id` : aucune donnée personnelle n’est stockée.
+
+Voir `CONTRIBUTING.md` pour le travail en pull requests.
